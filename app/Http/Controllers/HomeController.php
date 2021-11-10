@@ -34,13 +34,13 @@ class HomeController extends Controller
         return view('register');
     }
 
-    public function doRegister(Request $request)
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 2 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function doRegister(Request $request) {
+        $user = new User();
+        $user -> name = $request -> name;
+        $user -> email = $request -> email;
+        $user -> password = $request -> password;
+        $user -> save();
+        return redirect('/');
     }
 
     public function logout()
