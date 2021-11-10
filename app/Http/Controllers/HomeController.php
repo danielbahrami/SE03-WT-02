@@ -27,6 +27,7 @@ class HomeController extends Controller
         | Task 3 Guest, step 5. You should implement this method as instructed
         |-----------------------------------------------------------------------
         */
+        return redirect('/');
     }
 
     public function register()
