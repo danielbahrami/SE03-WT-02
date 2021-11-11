@@ -20,6 +20,7 @@
                         <input type="text" name="email" class="form-control email" id="email" value="{{ old('email') }}">
                         <label for="password" class="password">Password</label>
                         <input type="password" name="password" class="form-control password" id="password" value="{{ old('password') }}">
+                        <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <!-- Task 3 Guest, step 4: add submit button-->
                         <button class="login-submit" type="submit" value="Submit">Login</button>

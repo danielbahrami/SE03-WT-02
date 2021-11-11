@@ -20,13 +20,10 @@ class HomeController extends Controller
         return view('login');
     }
 
-    public function doLogin(Request $request)
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 3 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function doLogin(Request $request) {
+        $user = User::find(id);
+        Auth::login($user);
+        return redirect('/');
     }
 
     public function register()
