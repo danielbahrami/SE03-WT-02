@@ -16,9 +16,9 @@
                     @csrf
                     <!-- Task 3 Guest, step 3: add login fields as instructed-->
                     <!-- Tip: you can use the same style as the registration form -->
-                        <label for="email" class="email">Email</label>
+                        <label for="email">Email</label>
                         <input type="text" name="email" class="form-control email" id="email" value="{{ old('email') }}">
-                        <label for="password" class="password">Password</label>
+                        <label for="password">Password</label>
                         <input type="password" name="password" class="form-control password" id="password" value="{{ old('password') }}">
                         <br>
                     <div class="d-flex justify-content-between align-items-center">
