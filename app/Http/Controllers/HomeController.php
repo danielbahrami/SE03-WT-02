@@ -27,7 +27,6 @@ class HomeController extends Controller
         | Task 3 Guest, step 5. You should implement this method as instructed
         |-----------------------------------------------------------------------
         */
-        return redirect('/');
     }
 
     public function register()
@@ -36,11 +35,20 @@ class HomeController extends Controller
     }
 
     public function doRegister(Request $request) {
+        $request -> validate([
+            'name' => ['required'],
+            'email' => ['email'],
+            'password' => ['required'], ['confirmed']
+        ]);
+
         $user = new User();
         $user -> name = $request -> name;
         $user -> email = $request -> email;
-        $user -> password = $request -> password;
+        $user -> password = bcrypt($request['password']);
         $user -> save();
+
+        Auth::login($user);
+
         return redirect('/');
     }
 
