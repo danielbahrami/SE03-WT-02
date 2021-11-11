@@ -21,9 +21,18 @@ class HomeController extends Controller
     }
 
     public function doLogin(Request $request) {
-        $user = User::find(id);
-        Auth::login($user);
-        return redirect('/');
+
+            $user = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
+
+            if (Auth::attempt($user)) {
+                $request->session()->regenerate();
+
+                return redirect('/');
+            }
+
     }
 
     public function register()

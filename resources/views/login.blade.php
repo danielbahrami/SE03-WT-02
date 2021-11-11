@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <!-- Task 3 Guest, step 5: add the HTTP method and url as instructed-->
-                <form method="" action="#">
+                <form method="POST" action="login">
                     @csrf
                     <!-- Task 3 Guest, step 3: add login fields as instructed-->
                     <!-- Tip: you can use the same style as the registration form -->
