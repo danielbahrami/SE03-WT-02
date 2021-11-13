@@ -51,7 +51,7 @@
                     <span class="navbar-text text-black me-4 user-name">{{Auth::user() -> name ?? ''}}</span>
                     <li class="nav-item">
                         <!-- Task 2 User, step 3: add correct link-->
-                        <a class="nav-link logout-link" href="#">Log out</a>
+                        <a class="nav-link logout-link" href="/logout">Log out</a>
                     </li>
                 <!-- Task 1 Authorization-->
             </ul>

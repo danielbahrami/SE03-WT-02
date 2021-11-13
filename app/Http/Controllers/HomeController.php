@@ -55,12 +55,8 @@ class HomeController extends Controller
         return redirect('/');
     }
 
-    public function logout()
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 2 User, step 3. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function logout() {
+        Auth::logout();
+        return redirect('/');
     }
 }
