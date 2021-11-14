@@ -36,6 +36,8 @@ class AdoptionController extends Controller
         $adoption->description = $validated['description'];
         $adoption->listed_by   = auth()->id();
         $adoption->save();
+        return redirect('/') -> with('success', 'Post for ' . $adoption -> name . ' created successfully');
+
 
         /*
         |-----------------------------------------------------------------------
