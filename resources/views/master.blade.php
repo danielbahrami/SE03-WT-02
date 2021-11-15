@@ -25,7 +25,7 @@
                 </li>
 
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
-                
+
                     <li class="nav-item">
                         <a class="nav-link adoption-mine" href="{{ route('adoptions.mine') }}">My Adoptions</a>
                     </li>
@@ -49,15 +49,18 @@
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
                     <!-- Task 1 User, step 1: add name of logged user-->
                     <span class="navbar-text text-black me-4 user-name">{{Auth::user() -> name ?? ''}}</span>
+                @if (Auth::user())
                     <li class="nav-item">
                         <!-- Task 2 User, step 3: add correct link-->
                         <a class="nav-link logout-link" href="/logout">Log out</a>
                     </li>
+                @endif
                 <!-- Task 1 Authorization-->
             </ul>
         </div>
     </div>
 </nav>
+
 @yield('content')
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
