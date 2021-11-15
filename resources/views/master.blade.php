@@ -29,9 +29,11 @@
                     <li class="nav-item">
                         <a class="nav-link adoption-mine" href="{{ route('adoptions.mine') }}">My Adoptions</a>
                     </li>
+                @if  (Auth::user())
                     <li class="nav-item">
                         <a class="nav-link adoption-create" href="{{ route('adoptions.create') }}">New Listing</a>
                     </li>
+                @endif
                 <!-- Task 1 Authorization-->
             </ul>
             <ul class="navbar-nav d-flex">
