@@ -9,6 +9,10 @@ use Illuminate\Support\Str;
 
 class AdoptionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
     public function create()
     {
         return view('adoptions.create');
