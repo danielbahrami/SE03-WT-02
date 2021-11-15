@@ -29,23 +29,25 @@
                     <li class="nav-item">
                         <a class="nav-link adoption-mine" href="{{ route('adoptions.mine') }}">My Adoptions</a>
                     </li>
-                @if  (Auth::user())
-                    <li class="nav-item">
-                        <a class="nav-link adoption-create" href="{{ route('adoptions.create') }}">New Listing</a>
-                    </li>
-                @endif
+                    @if  (Auth::user())
+                        <li class="nav-item">
+                            <a class="nav-link adoption-create" href="{{ route('adoptions.create') }}">New Listing</a>
+                        </li>
+                    @endif
                 <!-- Task 1 Authorization-->
             </ul>
             <ul class="navbar-nav d-flex">
                 <!-- Task 1 Authorization, elements should appear for guest users only -->
-                    <li class="nav-item">
-                        <!-- Task 2 Guest, step 2: add correct link in href -->
-                        <a class="nav-link register-link" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Task 3 Guest, step 2: add correct link in href -->
-                        <a class="nav-link login-link" href="/login">Login</a>
-                    </li>
+                    @if  (Auth::guest())
+                        <li class="nav-item">
+                            <!-- Task 2 Guest, step 2: add correct link in href -->
+                            <a class="nav-link register-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Task 3 Guest, step 2: add correct link in href -->
+                            <a class="nav-link login-link" href="/login">Login</a>
+                        </li>
+                    @endif
                 <!-- Task 1 Authorization-->
 
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
