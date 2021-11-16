@@ -10,10 +10,6 @@ use Illuminate\Support\Str;
 
 class AdoptionController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index']);
-    }
     public function create()
     {
         return view('adoptions.create');
@@ -61,15 +57,23 @@ class AdoptionController extends Controller
 
     public function adopt(Adoption $adoption)
     {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 5 User, step 6. You should assing $adoption
-        | The $adoption variable should be assigned to the logged user.
-        | This is done using the adopted_by field from the user column in the database.
-        |-----------------------------------------------------------------------
-        */
+        if (auth()->user()->cannot('update',$adoption))
+        {
+            abort(403);
+        }
+        $adoption->adopted_by = auth()->id();
+        $adoption->saveOrFail();
 
         return redirect()->home()->with('success', "Pet $adoption->name adopted successfully");
+        /*
+                |-----------------------------------------------------------------------
+                | Task 5 User, step 6. You should assing $adoption
+                | The $adoption variable should be assigned to the logged user.
+                | This is done using the adopted_by field from the user column in the database.
+                |-----------------------------------------------------------------------
+                */
+
+
     }
 
 
