@@ -41,7 +41,7 @@ class HomeController extends Controller
         $request -> validate([
             'name' => ['required'],
             'email' => ['email'],
-            'password' => ['required'], ['confirmed']
+            'password' => ['required', 'confirmed']
         ]);
 
         $user = new User();

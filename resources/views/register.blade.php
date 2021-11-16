@@ -24,7 +24,7 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control password" id="password" value="{{ old('password') }}">
                         <label for="password-confirmation">Password Confirmation</label>
-                        <input type="password" name="password-confirmation" class="form-control password-confirmation" id="password-confirmation" value="{{ old('password') }}">
+                        <input type="password" name="password_confirmation" class="form-control password-confirmation" id="password-confirmation" value="{{ old('password') }}">
                         <br>
                         <button class="form-control register-submit" type="submit">Register</button>
                         @if($errors->has('name'))
