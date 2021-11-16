@@ -16,8 +16,9 @@
                         <!-- Task 6 User, step 4: this form should not appear if the pet was already adopted -->
                         <form method="post" action="{{ route('adoptions.adopt', [$adoption->id]) }}">
                             @csrf
-                            <button type="submit" class="btn btn-success pet-adopt">Adopt Now
-                            </button>
+                            @if($adoption->adopted_by == null)
+                            <button type="submit" class="btn btn-success pet-adopt">Adopt Now</button>
+                            @endif
                         </form>
 
                         @if($adoption->adopted_by != null)

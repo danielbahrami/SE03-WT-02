@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Adoption;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AdoptionController extends Controller
@@ -74,12 +75,7 @@ class AdoptionController extends Controller
 
     public function mine()
     {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 6 User, step 3.
-        | You should assing the $adoptions variable with a list of all adoptions of logged user.
-        |-----------------------------------------------------------------------
-        */
+        $adoptions = Auth::user()->adoptions;
         return view('adoptions.list', ['adoptions' => $adoptions, 'header' => 'My Adoptions']);
     }
 }
