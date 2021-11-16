@@ -12,12 +12,18 @@
             </div>
             <div class="card-body">
                 <!-- Task 3 Guest, step 5: add the HTTP method and url as instructed-->
-                <form method="" action="#">
+                <form method="POST" action="login">
                     @csrf
                     <!-- Task 3 Guest, step 3: add login fields as instructed-->
                     <!-- Tip: you can use the same style as the registration form -->
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control email" id="email" value="{{ old('email') }}">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control password" id="password" value="{{ old('password') }}">
+                        <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <!-- Task 3 Guest, step 4: add submit button-->
+                        <button class="login-submit" type="submit" value="Submit">Login</button>
                     </div>
                 </form>
             </div>

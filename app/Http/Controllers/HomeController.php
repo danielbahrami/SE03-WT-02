@@ -20,13 +20,16 @@ class HomeController extends Controller
         return view('login');
     }
 
-    public function doLogin(Request $request)
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 3 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function doLogin(Request $request) {
+        $user = $request -> validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt($user)) {
+            $request -> session() -> regenerate();
+            return redirect('/');
+        }
     }
 
     public function register()
@@ -34,21 +37,26 @@ class HomeController extends Controller
         return view('register');
     }
 
-    public function doRegister(Request $request)
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 2 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function doRegister(Request $request) {
+        $request -> validate([
+            'name' => ['required'],
+            'email' => ['email'],
+            'password' => ['required', 'confirmed']
+        ]);
+
+        $user = new User();
+        $user -> name = $request -> name;
+        $user -> email = $request -> email;
+        $user -> password = bcrypt($request['password']);
+        $user -> save();
+
+        Auth::login($user);
+
+        return redirect('/');
     }
 
-    public function logout()
-    {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 2 User, step 3. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+    public function logout() {
+        Auth::logout();
+        return redirect('/');
     }
 }

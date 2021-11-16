@@ -12,13 +12,21 @@
             </div>
             <div class="card-body">
                 <!-- Task 2 Guest, step 5: add the HTTP method and url as instructed-->
-                <form method="" action="#">
+                <form method="POST" action="register">
                     @csrf
                     <!-- Task 2 Guest, step 3: add register fields as instructed-->
                     <!-- Tip: we add the element name for you as an inspiration on how you can add the rest of the inputs -->
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name">Name</label>
                         <input type="text" name="name" class="form-control name" id="name" value="{{ old('name') }}">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control email" id="email" value="{{ old('email') }}">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control password" id="password" value="{{ old('password') }}">
+                        <label for="password-confirmation">Password Confirmation</label>
+                        <input type="password" name="password_confirmation" class="form-control password-confirmation" id="password-confirmation" value="{{ old('password') }}">
+                        <br>
+                        <button class="form-control register-submit" type="submit">Register</button>
                         @if($errors->has('name'))
                             <div class="form-text text-danger">{{ $errors->first('name') }}</div>
                         @endif
